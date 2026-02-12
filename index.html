@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Speep 💙 Belly</title>
+
+  <!-- Cute cartoon font -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #aee7ff; /* Pocoyo blue */
+      font-family: 'Baloo 2', cursive;
+      text-align: center;
+      padding-top: 50px;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #1e6fd9;
+      font-size: 38px;
+    }
+
+    p {
+      font-size: 22px;
+      color: #004aad;
+      margin-bottom: 20px;
+    }
+
+    .characters img {
+      width: 140px;
+      margin: 10px;
+    }
+
+    button {
+      padding: 15px 35px;
+      font-size: 22px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      margin: 10px;
+      font-family: 'Baloo 2', cursive;
+    }
+
+    .yes {
+      background-color: #ff6f91;
+      color: white;
+    }
+
+    .no {
+      background-color: #ffd166;
+      color: #333;
+      position: absolute;
+    }
+
+    #wrongText {
+      display: none;
+      color: #ff3b3b;
+      font-size: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background music -->
+  <audio autoplay loop>
+    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kevin_MacLeod/Cartoon_Music/Kevin_MacLeod_-_Monkeys_Spinning_Monkeys.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="characters">
+    <img src="https://i.imgur.com/4AiXzf8.png" alt="Pocoyo">
+    <img src="https://i.imgur.com/Z6X6JYx.png" alt="Elly">
+  </div>
+
+  <h1>💙 Belly 💙</h1>
+  <p>Can Speep be Belly’s Valentine? 💌</p>
+
+  <button class="yes" onclick="yesClicked()">Yes 🥰</button>
+  <button class="no" onmouseover="moveButton()" onclick="wrongChoice()">No 🙈</button>
+
+  <div id="wrongText">uh oh belly picked the wrong one 😔</div>
+
+  <script>
+    function yesClicked() {
+      alert("YAYYYY!! 💙🥹\nSpeep & Belly forever 💫");
+    }
+
+    function moveButton() {
+      const button = document.querySelector('.no');
+      const x = Math.random() * (window.innerWidth - 150);
+      const y = Math.random() * (window.innerHeight - 150);
+      button.style.left = x + 'px';
+      button.style.top = y + 'px';
+    }
+
+    function wrongChoice() {
+      document.getElementById("wrongText").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
