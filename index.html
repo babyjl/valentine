@@ -1,102 +1,134 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Speep 💙 Belly</title>
-
-  <!-- Cute cartoon font -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap" rel="stylesheet">
-
+  <title>jbl theory</title>
   <style>
     body {
-      background-color: #aee7ff; /* Pocoyo blue */
-      font-family: 'Baloo 2', cursive;
-      text-align: center;
-      padding-top: 50px;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Times New Roman", Times, serif;
+      position: relative;
       overflow: hidden;
     }
 
-    h1 {
-      color: #1e6fd9;
-      font-size: 38px;
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("https://scontent.fmnl4-7.fna.fbcdn.net/v/t1.6435-9/71284479_403347693896759_308106664458846208_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeEJzhQFi3taXhkitn-OqkrVPuN2f-uHErc-43Z_64cSt7ArnArtaVPqG_Xyfal063RVjHepALraXRewWY4qEzCf&_nc_ohc=QDBHZZP1WX0Q7kNvwECI5oB&_nc_oc=AdmmxWyurQyYh2Mq_siTJj3D3oKGEiPbbVs3gFBTpWhPZubTmMGDFsrH6wHmYgqhx4uKF8-FCy4nPokDfcwBjiUD&_nc_zt=23&_nc_ht=scontent.fmnl4-7.fna&_nc_gid=F2nYdaxfbYevYYAlDz5P9Q&oh=00_Afs9LTLGru89zsbLPWQaRsSIysS9rIWpmDwxD9sKIPB8Yw&oe=69B647F5");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.6; /* change this to make it lighter or darker */
+      z-index: 0;
     }
 
-    p {
-      font-size: 22px;
-      color: #004aad;
+    .card {
+      position: relative;
+      background: white; /* fully opaque */
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      padding: 40px 30px;
+      text-align: center;
+      width: 350px;
+      z-index: 1;
+    }
+
+    .card img {
+      width: 200px;
       margin-bottom: 20px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
     }
 
-    .characters img {
-      width: 140px;
-      margin: 10px;
-    }
-
-    button {
-      padding: 15px 35px;
+    .card p {
       font-size: 22px;
+      color: #FF0000;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .card button {
+      padding: 12px 35px;
+      font-size: 18px;
       border: none;
-      border-radius: 15px;
+      border-radius: 25px;
       cursor: pointer;
-      margin: 10px;
-      font-family: 'Baloo 2', cursive;
+      margin: 0 10px;
+      transition: all 0.2s ease;
+      font-family: "Times New Roman", Times, serif;
+      position: relative;
     }
 
     .yes {
-      background-color: #ff6f91;
+      background-color: #4CAF50;
       color: white;
     }
 
-    .no {
-      background-color: #ffd166;
-      color: #333;
-      position: absolute;
+    .yes:hover {
+      transform: scale(1.2);
     }
 
-    #wrongText {
-      display: none;
-      color: #ff3b3b;
-      font-size: 20px;
-      margin-top: 20px;
+    .no {
+      background-color: #9C27B0;
+      color: white;
     }
+
   </style>
 </head>
 <body>
 
-  <!-- Background music -->
-  <audio autoplay loop>
-    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kevin_MacLeod/Cartoon_Music/Kevin_MacLeod_-_Monkeys_Spinning_Monkeys.mp3" type="audio/mpeg">
-  </audio>
+  <div class="card">
+    <img id="pocoyoGif" src="https://media.tenor.com/VZudMd4KOjEAAAAi/pocoyo.gif" alt="Pocoyo">
+    <p id="message">Can Speep be Belly’s Valentine?</p>
 
-  <div class="characters">
-    <img src="https://i.imgur.com/4AiXzf8.png" alt="Pocoyo">
-    <img src="https://i.imgur.com/Z6X6JYx.png" alt="Elly">
+    <button class="yes" id="yesButton">Yes</button>
+    <button class="no" id="noButton">No</button>
   </div>
 
-  <h1>💙 Belly 💙</h1>
-  <p>Can Speep be Belly’s Valentine? 💌</p>
+<script>
+  const gif = document.getElementById("pocoyoGif");
+  const message = document.getElementById("message");
+  const noButton = document.getElementById("noButton");
+  const yesButton = document.getElementById("yesButton");
 
-  <button class="yes" onclick="yesClicked()">Yes 🥰</button>
-  <button class="no" onmouseover="moveButton()" onclick="wrongChoice()">No 🙈</button>
+  yesButton.addEventListener("click", () => {
+    gif.src = "https://media.tenor.com/DQ0mcYa1H10AAAAi/pocoyo-pocoyo-dance.gif";
+    message.textContent = "YIPEEEEEEEEEE!!!";
+    yesButton.style.display = "none";
+    noButton.style.display = "none";
+  });
 
-  <div id="wrongText">uh oh belly picked the wrong one 😔</div>
 
-  <script>
-    function yesClicked() {
-      alert("YAYYYY!! 💙🥹\nSpeep & Belly forever 💫");
-    }
+  yesButton.addEventListener("mouseenter", () => {
+    yesButton.style.transform = "scale(1.2)";
+  });
+  yesButton.addEventListener("mouseleave", () => {
+    yesButton.style.transform = "scale(1)";
+  });
 
-    function moveButton() {
-      const button = document.querySelector('.no');
-      const x = Math.random() * (window.innerWidth - 150);
-      const y = Math.random() * (window.innerHeight - 150);
-      button.style.left = x + 'px';
-      button.style.top = y + 'px';
-    }
+  noButton.addEventListener("mouseenter", () => {
+    const cardRect = noButton.parentElement.getBoundingClientRect();
+    const buttonWidth = noButton.offsetWidth;
+    const buttonHeight = noButton.offsetHeight;
+    const maxX = cardRect.width - buttonWidth;
+    const maxY = cardRect.height - buttonHeight;
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+    noButton.style.position = "absolute";
+    noButton.style.left = randomX + "px";
+    noButton.style.top = randomY + "px";
+  });
 
-    function wrongChoice() {
-      document.getElementById("wrongText").style.display = "block";
-    }
-  </script>
+</script>
 
 </body>
 </html>
+
